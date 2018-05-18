@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-sj-utils"
+    version="1.0.0">
+    <name>SJUtilsPlugin</name>
+    <description>Cordova Plugin SJUtils</description>
+    <author>FHSJ</author>
+    <license>MIT License</license>
+    <keywords>cordova,sjutils</keywords>
+
+    <js-module src="SJUtilsPlugin.js" name="SJUtilsPlugin">
+        <clobbers target="window.plugins.SJUtilsPlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Device" >
+                <param name="android-package" value="org.apache.cordova.device.Device"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="SJUtilsPlugin">
+                <param name="ios-package" value="SJUtilsPlugin"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/AsyncUdpSocket.h" />
+        <source-file src="src/ios/AsyncUdpSocket.m" />
+        <header-file src="src/ios/SJUtilsPlugin.h" />
+        <source-file src="src/ios/SJUtilsPlugin.m" />
+    </platform>
+</plugin>
