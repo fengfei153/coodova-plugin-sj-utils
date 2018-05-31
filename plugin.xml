@@ -30,14 +30,14 @@
         </config-file>
 
         <lib-file src="src/android/libs/esptouch-v0.3.6.2.jar" />
-        <source-file src="src/android/update/Constants.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
-        <source-file src="src/android/update/DownloadApkThread.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
-        <source-file src="src/android/update/DownloadHandler.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
-        <source-file src="src/android/update/MsgBox.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
-        <source-file src="src/android/update/UpdateManager.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
+        <source-file src="src/android/update/Constants.java" target-dir="src/com/fhsjdz/cordova/utils/update" />
+        <source-file src="src/android/update/DownloadApkThread.java" target-dir="src/com/fhsjdz/cordova/utils/update" />
+        <source-file src="src/android/update/DownloadHandler.java" target-dir="src/com/fhsjdz/cordova/utils/update" />
+        <source-file src="src/android/update/MsgBox.java" target-dir="src/com/fhsjdz/cordova/utils/update" />
+        <source-file src="src/android/update/UpdateManager.java" target-dir="src/com/fhsjdz/cordova/utils/update" />
 
-        <source-file src="src/android/WifiAdmin.java" target-dir="src/com/fhsjdz/cordova.utils" />
-        <source-file src="src/android/SJUtilsPlugin.java" target-dir="src/com/fhsjdz/cordova.utils" />
+        <source-file src="src/android/WifiAdmin.java" target-dir="src/com/fhsjdz/cordova/utils" />
+        <source-file src="src/android/SJUtilsPlugin.java" target-dir="src/com/fhsjdz/cordova/utils" />
     </platform>
 
     <!-- ios -->
