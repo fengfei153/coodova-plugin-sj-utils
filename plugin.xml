@@ -17,11 +17,27 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="SJUtilsPlugin" >
-                <param name="android-package" value="com.fh3jyun.appbasic.SJUtilsPlugin"/>
+                <param name="android-package" value="com.fhsjdz.cordova.utils.SJUtilsPlugin"/>
             </feature>
         </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+            <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+        </config-file>
 
-        <source-file src="src/android/SJUtilsPlugin.java" target-dir="src/com/fhsjdz/appbasic" />
+        <lib-file src="src/android/libs/esptouch-v0.3.6.2.jar" />
+        <source-file src="src/android/update/Constants.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
+        <source-file src="src/android/update/DownloadApkThread.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
+        <source-file src="src/android/update/DownloadHandler.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
+        <source-file src="src/android/update/MsgBox.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
+        <source-file src="src/android/update/UpdateManager.java" target-dir="src/com/fhsjdz/cordova.utils.update" />
+
+        <source-file src="src/android/WifiAdmin.java" target-dir="src/com/fhsjdz/cordova.utils" />
+        <source-file src="src/android/SJUtilsPlugin.java" target-dir="src/com/fhsjdz/cordova.utils" />
     </platform>
 
     <!-- ios -->
@@ -31,6 +47,8 @@
                 <param name="ios-package" value="SJUtilsPlugin"/>
             </feature>
         </config-file>
+        
+        <framework src="src/ios/Esptouch.framework" custom="true" framework="true"/>
 
         <header-file src="src/ios/AsyncUdpSocket.h" />
         <source-file src="src/ios/AsyncUdpSocket.m" />

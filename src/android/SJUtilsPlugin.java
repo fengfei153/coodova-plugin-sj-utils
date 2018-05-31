@@ -1,4 +1,4 @@
-package com.fhsjdz.appbasic;
+package com.fhsjdz.cordova.utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,8 +21,8 @@ import com.espressif.iot.esptouch.EsptouchTask;
 import com.espressif.iot.esptouch.IEsptouchListener;
 import com.espressif.iot.esptouch.IEsptouchResult;
 import com.espressif.iot.esptouch.IEsptouchTask;
-import com.fhsjdz.appbasic.net.WifiAdmin;
-import com.fhsjdz.appbasic.update.UpdateManager;
+import com.fhsjdz.cordova.utils.WifiAdmin;
+import com.fhsjdz.cordova.utils.update.UpdateManager;
 
 import android.Manifest;
 import android.app.Activity;

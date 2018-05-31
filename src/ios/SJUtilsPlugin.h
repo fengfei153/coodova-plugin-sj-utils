@@ -1,20 +1,20 @@
-#import "ESPTouchTask.h"
-#import "ESP_NetUtil.h"
-#import "ESPTouchResult.h"
-#import "ESPTouchDelegate.h"
+#import <Esptouch/ESPTouchTask.h>
+#import <Esptouch/ESPTouchResult.h>
+#import <Esptouch/ESP_NetUtil.h>
+#import <Esptouch/ESPTouchDelegate.h>
 #import <Cordova/CDVPluginResult.h>
-#import <SystemConfiguration/CaptiveNetwork.h>
 #import <Cordova/CDVPlugin.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 #import "AsyncUdpSocket.h"
+#import <ifaddrs.h>
+#import <arpa/inet.h>
 
 //listener to get result
 @interface EspTouchDelegateImpl : NSObject<ESPTouchDelegate>
-
 @property (nonatomic, strong) CDVInvokedUrlCommand *command;
 @property (nonatomic, weak) id <CDVCommandDelegate> commandDelegate;
 
 @end
-
 
 @interface SJUtilsPlugin : CDVPlugin<AsyncUdpSocketDelegate>
 

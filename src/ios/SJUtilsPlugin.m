@@ -1,6 +1,4 @@
 #import "SJUtilsPlugin.h"
-#import <ifaddrs.h>
-#import <arpa/inet.h>
 
 @implementation EspTouchDelegateImpl
 
