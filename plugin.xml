@@ -47,10 +47,10 @@
                 <param name="ios-package" value="SJUtilsPlugin"/>
             </feature>
         </config-file>
-        <framework src="CoreGraphics.framework" />
-        <framework src="UIKit.framework" />
-	    <framework src="Foundation.framework" />
-        <framework src="src/ios/Esptouch.framework" custom="true" framework="true"/>
+        <framework src="CoreGraphics.framework" weak="true"/>
+        <framework src="UIKit.framework" weak="true"/>
+        <framework src="Foundation.framework" weak="true"/>
+        <framework src="src/ios/Esptouch.framework" custom="true" weak="true"/>
 
         <header-file src="src/ios/AsyncUdpSocket.h" />
         <source-file src="src/ios/AsyncUdpSocket.m" />
