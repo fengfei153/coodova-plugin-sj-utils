@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-sj-utils"
-    version="1.0.0">
+    version="1.1.0">
     <name>SJUtilsPlugin</name>
     <description>Cordova Plugin SJUtils</description>
     <author>FHSJ</author>
@@ -50,7 +50,36 @@
         <framework src="CoreGraphics.framework" weak="true"/>
         <framework src="UIKit.framework" weak="true"/>
         <framework src="Foundation.framework" weak="true"/>
-        <framework src="src/ios/Esptouch.framework" custom="true" weak="true"/>
+        <framework src="SystemConfiguration.framework" weak="true" />
+        
+        <header-file src="src/ios/Esptouch/ESP_ByteUtil.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESP_ByteUtil.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESP_CRC8.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESP_CRC8.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESP_NetUtil.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESP_NetUtil.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESP_WifiUtil.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESP_WifiUtil.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPDataCode.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPDataCode.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPDatumCode.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPDatumCode.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPGuideCode.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPGuideCode.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPTouchDelegate.h" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPTouchGenerator.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPTouchGenerator.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPTouchResult.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPTouchResult.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPTouchTask.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPTouchTask.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPTouchTaskParameter.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPTouchTaskParameter.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPUDPSocketClient.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPUDPSocketClient.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPUDPSocketServer.h" target-dir="Esptouch" />
+        <source-file src="src/ios/Esptouch/ESPUDPSocketServer.m" target-dir="Esptouch" />
+        <header-file src="src/ios/Esptouch/ESPVersionMacro.h" target-dir="Esptouch" />
 
         <header-file src="src/ios/AsyncUdpSocket.h" />
         <source-file src="src/ios/AsyncUdpSocket.m" />
