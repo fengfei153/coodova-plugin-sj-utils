@@ -200,8 +200,7 @@ public class SJUtilsPlugin extends CordovaPlugin {
 				new Runnable(){
 					public void run(){
 						synchronized (mLock) {
-	                        boolean isSsidHidden = false;
-	                        mEsptouchTask = new EsptouchTask(apSsid, apBssid, apPassword, isSsidHidden, cordova.getActivity());
+	                        mEsptouchTask = new EsptouchTask(apSsid, apBssid, apPassword, cordova.getActivity());
 	                        mEsptouchTask.setEsptouchListener(myListener);
 						}
 						List<IEsptouchResult> resultList = mEsptouchTask.executeForResults(taskResultCount);
