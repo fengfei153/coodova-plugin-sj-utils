@@ -9,6 +9,10 @@
     <license>MIT License</license>
     <keywords>cordova,sj-utils</keywords>
 
+    <engines>
+        <engine name="cordova-android" version=">=6.3.0" />
+    </engines>
+    
     <js-module src="SJUtilsPlugin.js" name="SJUtilsPlugin">
         <clobbers target="window.plugins.SJUtilsPlugin" />
     </js-module>
