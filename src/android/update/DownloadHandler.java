@@ -3,12 +3,15 @@ package com.fhsjdz.cordova.utils.update;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.FileProvider;
 import android.widget.ProgressBar;
 
+import com.fh3jyun.appbasic.BuildConfig;
+
 import java.io.File;
-import java.util.HashMap;
 
 import org.apache.cordova.CordovaWebView;
 
@@ -67,8 +70,14 @@ public class DownloadHandler extends Handler {
         }
         // 通过Intent安装APK文件
         Intent i = new Intent(Intent.ACTION_VIEW);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.setDataAndType(Uri.parse("file://" + apkFile.toString()), "application/vnd.android.package-archive");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            i.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri contentUri = FileProvider.getUriForFile(mContext, BuildConfig.APPLICATION_ID + ".provider", apkFile);
+            i.setDataAndType(contentUri, "application/vnd.android.package-archive");
+        }else{
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
+        }
         mContext.startActivity(i);
         mWebView.getPluginManager().postMessage("exit", null);
     }
