@@ -42,6 +42,7 @@
 
         <source-file src="src/android/WifiAdmin.java" target-dir="src/com/fhsjdz/cordova/utils" />
         <source-file src="src/android/SJUtilsPlugin.java" target-dir="src/com/fhsjdz/cordova/utils" />
+        <resource-file src="src/android/upgrade_progress.xml" target="res/layout/upgrade_progress.xml" />
         <resource-file src="src/android/upgrade.xml" target="res/values/upgrade.xml" />
     </platform>
 
