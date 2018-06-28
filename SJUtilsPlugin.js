@@ -12,7 +12,7 @@ SJUtilsPlugin.prototype.getWifiSSID = function(success){
 };
 SJUtilsPlugin.prototype.smartConfig = function(ssid, bssid, password, tastCount, success, error){
 	setTimeout(function(){
-		exec(success, error, "SJUtilsPlugin", "smartConfig", [ssid, bssid, password]);
+		exec(success, error, "SJUtilsPlugin", "smartConfig", [ssid, bssid, password, tastCount]);
 	}, 30);
 };
 SJUtilsPlugin.prototype.cancelSmartConfig = function(success){
