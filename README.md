@@ -7,7 +7,9 @@
 
 ## Methods
 
-- window.plugins.SJUtilsPlugin.xxx
+- window.plugins.SJUtilsPlugin.getVersionCode
+- window.plugins.SJUtilsPlugin.getWifiSSID
+- window.plugins.SJUtilsPlugin.smartConfig
 
 ### Supported Platforms
 
