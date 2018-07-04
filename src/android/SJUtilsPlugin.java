@@ -21,7 +21,6 @@ import com.espressif.iot.esptouch.EsptouchTask;
 import com.espressif.iot.esptouch.IEsptouchListener;
 import com.espressif.iot.esptouch.IEsptouchResult;
 import com.espressif.iot.esptouch.IEsptouchTask;
-import com.fh3jyun.appbasic.BuildConfig;
 import com.fhsjdz.cordova.utils.WifiAdmin;
 import com.fhsjdz.cordova.utils.update.UpdateManager;
 
@@ -268,13 +267,13 @@ public class SJUtilsPlugin extends CordovaPlugin {
         Intent intent = new Intent(Intent.ACTION_VIEW);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 			intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-			Uri contentUri = FileProvider.getUriForFile(this.cordova.getActivity(), BuildConfig.APPLICATION_ID + ".provider", apkFile);
+			Uri contentUri = FileProvider.getUriForFile(cordova.getActivity(), cordova.getActivity().getApplicationInfo().packageName + ".provider", apkFile);
 			intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
 		}else{
 			intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		}
-        this.cordova.getActivity().startActivity(intent);
+        cordova.getActivity().startActivity(intent);
     }
     /**
      * 发送UDP广播

@@ -9,8 +9,6 @@ import android.os.Message;
 import android.support.v4.content.FileProvider;
 import android.widget.ProgressBar;
 
-import com.fh3jyun.appbasic.BuildConfig;
-
 import java.io.File;
 
 import org.apache.cordova.CordovaWebView;
@@ -72,7 +70,7 @@ public class DownloadHandler extends Handler {
         Intent i = new Intent(Intent.ACTION_VIEW);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             i.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            Uri contentUri = FileProvider.getUriForFile(mContext, BuildConfig.APPLICATION_ID + ".provider", apkFile);
+            Uri contentUri = FileProvider.getUriForFile(mContext, mContext.getApplicationInfo().packageName + ".provider", apkFile);
             i.setDataAndType(contentUri, "application/vnd.android.package-archive");
         }else{
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
