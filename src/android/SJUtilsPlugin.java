@@ -252,26 +252,33 @@ public class SJUtilsPlugin extends CordovaPlugin {
                     break;
                 case DownloadManager.STATUS_SUCCESSFUL:
                     //下载完成安装APK
-                	String downloadPath = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME));
-                    //String downloadPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + filename;
-                    //Log.i(TAG, downloadPath);
-                    installAPK(new File(downloadPath));
+					String downloadPath = null;
+					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+						String fileUri = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+						if (fileUri != null) {
+							downloadPath = Uri.parse(fileUri).getPath();
+						}
+					}else{
+						downloadPath = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME));
+					}
+                    installAPK(downloadPath);
                     break;
             }
         }
     }
     
 	//下载到本地后执行安装
-    protected void installAPK(File apkFile) {
-        if (!apkFile.exists()) return;
+    protected void installAPK(String fileUrl) {
+        if (fileUrl == null) return;
+		File apkFile = new File(fileUrl);
         Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-			intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+			intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 			Uri contentUri = FileProvider.getUriForFile(cordova.getActivity(), cordova.getActivity().getApplicationInfo().packageName + ".provider", apkFile);
 			intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
 		}else{
 			intent.setDataAndType(Uri.fromFile(apkFile), "application/vnd.android.package-archive");
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		}
         cordova.getActivity().startActivity(intent);
     }
