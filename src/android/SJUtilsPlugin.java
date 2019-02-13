@@ -60,7 +60,8 @@ public class SJUtilsPlugin extends CordovaPlugin {
 	private long mTaskId;
 	private RelativeLayout toastLayout = null;
 	private TextView toastView = null;
-	private String [] permissions = { Manifest.permission.WRITE_EXTERNAL_STORAGE };
+	private String [] updatePerms = { Manifest.permission.WRITE_EXTERNAL_STORAGE };
+    private String [] wifiPerms = { Manifest.permission.ACCESS_FINE_LOCATION };
 	
 	private static final String GET_PREFERRED_LANGUAGE = "getPreferredLanguage";
     private static final String CONNECT_WIFI = "connectWiFi";
@@ -94,15 +95,21 @@ public class SJUtilsPlugin extends CordovaPlugin {
 	    	if (action.equals("getVersionCode")) {
 	    		getVersionCode(args, callbackContext);
 	    	}else if(action.equals("update")){
-	    		if(!hasPermisssion()) {
+	    		if(!hasPermisssion(updatePerms)) {
 	    			this.requestArgs = args;
 	    			this.callbackContext = callbackContext;
-	    			PermissionHelper.requestPermissions(this, 0, permissions);
+	    			PermissionHelper.requestPermissions(this, 0, updatePerms);
 	            } else {
 	            	update(args, callbackContext);
 	            }
 	    	}else if(action.equals(GET_WIFI_SSID)){
-	    		getWifiSSID(args, callbackContext);
+	    		if(!hasPermisssion(wifiPerms)) {
+                    this.requestArgs = args;
+                    this.callbackContext = callbackContext;
+                    PermissionHelper.requestPermissions(this, 1, wifiPerms);
+                } else {
+                    getWifiSSID(args, callbackContext);
+                }
 	    	}else if(action.equals("smartConfig")){
 	    		smartConfig(args, callbackContext);
 	    	}else if(action.equals("cancelSmartConfig")){
@@ -449,7 +456,7 @@ public class SJUtilsPlugin extends CordovaPlugin {
      * check application's permissions
      */
 	@Override
-	public boolean hasPermisssion() {
+	public boolean hasPermisssion(String [] permissions) {
 		for (String p : permissions) {
 			if (!PermissionHelper.hasPermission(this, p)) {
 				return false;
@@ -482,6 +489,8 @@ public class SJUtilsPlugin extends CordovaPlugin {
 		switch (requestCode) {
 			case 0:
 				update(this.requestArgs, this.callbackContext);
+			case 0:
+                getWifiSSID(this.requestArgs, this.callbackContext);
 			break;
 		}
 	}
