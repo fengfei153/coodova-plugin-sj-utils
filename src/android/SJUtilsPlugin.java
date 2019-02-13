@@ -489,7 +489,7 @@ public class SJUtilsPlugin extends CordovaPlugin {
 		switch (requestCode) {
 			case 0:
 				update(this.requestArgs, this.callbackContext);
-			case 0:
+			case 1:
                 getWifiSSID(this.requestArgs, this.callbackContext);
 			break;
 		}
