@@ -455,7 +455,6 @@ public class SJUtilsPlugin extends CordovaPlugin {
     /**
      * check application's permissions
      */
-    @Override
     public boolean hasPermisssion(String [] permissions) {
         for (String p : permissions) {
             if (!PermissionHelper.hasPermission(this, p)) {
